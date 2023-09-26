@@ -1,0 +1,76 @@
+import sys
+import os
+
+# 현재 스크립트의 경로를 가져옴
+current_path = os.path.dirname(os.path.abspath(__file__))
+
+# structure 디렉토리의 경로를 sys.path에 추가
+sys.path.append(os.path.join(current_path, '../structure'))
+
+from structure_bsort import *
+
+from z3 import *
+import random
+
+#2회전을 확인하는 함수
+def check_two_pass(s, arr):
+    s.push()
+    #배열의 마지막 원소가 배열의 나머지 원소보다 커야 함
+    for i in range(len(arr) - 2):
+        s.add(arr[len(arr)-1] > arr[i])
+    
+    #배열의 마지막에서 두번째인 원소가 마지막 원소를 제외한 나머지 원소보다 커야 함
+    for i in range(len(arr) - 3):
+        s.add(arr[len(arr)-2] > arr[i])
+    
+    #배열의 마지막에서 세번째인 원소가 마지막 원소, 그 이전 원소를 제외한 나머지 원소보다 모두 크지 않아야 함.
+    conditions = [arr[len(arr)-3] < arr[i] for i in range(len(arr) - 4)]
+    s.add(Or(*conditions))
+
+    #결과가 sat면 result에 해당 회전 결과 들어감
+    result = s.check() == sat
+    #solver 상태 복구
+    s.pop()
+
+    return result
+
+
+
+# solver 초기화
+s = Solver()
+
+init_value, all_value = makeNum()
+a, b, c, d, e, f = Ints('a b c d e f')
+init = [a, b, c, d, e, f]
+
+# init의 각 원소, 즉 solver 변수들에 초기값 할당하기
+for var, value in zip(init, init_value): 
+    s.add(var == value)
+
+#버블정렬을 적용한 전체 결과를 check_two_pass에 넣고, sat한 결과(2회전결과)를 도출하기
+answer = []
+random.shuffle(all_value)
+
+for arr in all_value:
+    if check_two_pass(s, arr):
+        answer.append(arr)
+
+if answer:
+    print(f"다음과 같은 숫자 배열이 주어졌을 때 : {init_value}, \n버블 정렬(Bubble Sort) 알고리즘을 사용하여 정렬한다고 가정하면 두 번째 통과 후의 배열 상태는 어떻게 되는가?")
+
+    #젼체 리스트에서 정답을 제외한 나머지 랜덤한 요소 하나를 없애기
+    choice = [[0 for j in range(6)] for i in range(4)]
+    choice = [item for item in all_value if item not in answer]
+    not_choice = random.choice(choice)
+    all_value.remove(not_choice)
+
+    #문제 출력
+    cnt = 1
+    for row in all_value:
+        print(f"{cnt} : {row}")
+        cnt += 1
+
+    #답 출력
+    print(f"답: {answer[0]}")
+else:
+    print("답을 찾을 수 없습니다.")
