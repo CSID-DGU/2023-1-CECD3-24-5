@@ -14,20 +14,20 @@ def generate_not_bst_conditions(node):
     conditions=[]
     if node.left:
         conditions.append(node.left.value > node.value)
-        conditions.extend(node.left)
+        conditions.extend(generate_not_bst_conditions(node.left))
     if node.right:
         conditions.append(node.right.value < node.value)
-        conditions.extend(node.right)
+        conditions.extend(generate_not_bst_conditions(node.right))
     return conditions
 
 def generate_not_minHeap_conditions(node):
     conditions=[]
     if node.left:
         conditions.append(node.left.value > node.value)
-        conditions.extend(node.left)
+        conditions.extend(generate_not_bst_conditions(node.left))
     if node.right:
         conditions.append(node.right.value > node.value)
-        conditions.extend(node.right)
+        conditions.extend(generate_not_bst_conditions(node.right))
     return conditions
 
 class NormalTree:

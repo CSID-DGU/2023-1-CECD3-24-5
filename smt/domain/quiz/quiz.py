@@ -1,3 +1,7 @@
+# 모든 quiz_으로 시작하는 파일들은 quiz 객체를 클래스 변수로 가짐.
+# quiz 객체는 number(문제번호), problem(문제 텍스트), select(선지 리스트), answer(선지에서 답의 인덱스)로 이루어짐
+ 
+
 import random
 
 class quiz:

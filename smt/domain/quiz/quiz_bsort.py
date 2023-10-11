@@ -1,3 +1,5 @@
+from z3 import *
+from quiz import *
 import sys
 import os
 
@@ -5,11 +7,8 @@ import os
 current_path = os.path.dirname(os.path.abspath(__file__))
 
 # structure 디렉토리의 경로를 sys.path에 추가
-sys.path.append(os.path.join(current_path, '../source/structure'))
-
+sys.path.append(os.path.join(current_path, '../structure'))
 from structure_bsort_list import *
-from quiz import *
-from z3 import *
 
 class quiz_bsort:
 
@@ -55,9 +54,9 @@ class quiz_bsort:
         i=1
         for arr in all_value:
             if self.check_two_pass(s, arr):
-                select[0]=arr
+                select[0]=', '.join(map(str, arr))
             else:
-                select[i]=arr
+                select[i]=', '.join(map(str, arr))
                 i=i+1
         select.pop()
 
@@ -71,3 +70,4 @@ class quiz_bsort:
             self.quiz=quiz(number,problem,select,answer)
         else:
             print("문제 생성 실패")
+
