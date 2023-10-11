@@ -1,6 +1,6 @@
 from z3 import *
 import random
-from Node import Node
+from smt.structure_Node import Node
 
 def generate_min_heap_condition(node):
     conditions=[]

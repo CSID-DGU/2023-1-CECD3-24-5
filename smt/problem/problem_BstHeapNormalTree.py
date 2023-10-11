@@ -7,9 +7,9 @@
 
 from z3 import *
 import random
-from NormalTree import NormalTree
-from MinHeap import MinHeap
-from BST import BST
+from smt.structure_NormalTree import NormalTree
+from smt.structure_MinHeap import MinHeap
+from smt.structure_BST import BST
 
 class BstHeapNormalTree:
 

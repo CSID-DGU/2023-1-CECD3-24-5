@@ -1,6 +1,6 @@
 from z3 import *
 import random
-from Node import Node
+from smt.structure_Node import Node
 
 def collect_all_nodes(node):    
     nodes = [node]

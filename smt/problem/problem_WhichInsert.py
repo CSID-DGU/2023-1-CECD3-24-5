@@ -8,8 +8,8 @@
 
 from z3 import Solver, Int, And
 import random
-from Node import Node
-from BST import BST
+from smt.structure_Node import Node
+from smt.structure_BST import BST
 
 
 # 정의된 삽입 메소드 (이 경우, 이진 탐색 트리 삽입)
