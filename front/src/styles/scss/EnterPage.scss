@@ -1,0 +1,30 @@
+$bgColor: #FFFCF3;
+$btColor: #398D78;
+$defaultText: #000;
+$accentText: #FFF;
+
+.Enter {
+    background-color: $bgColor;
+    color: $defaultText;
+
+    &Title {
+        text-align: center;
+        font-size: 68px;
+        font-weight: 700;
+        line-height: 94px; 
+        letter-spacing: -1.36px;
+    }
+
+    &Content {
+        color: #000;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 94px;
+        letter-spacing: -0.6px;
+    }
+
+    &Button {
+        background-color: $btColor;
+    }
+}
