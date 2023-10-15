@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Navigate, useNavigate, useHistory } from 'react-router-dom';
+import { Navigate, useNavigate} from 'react-router-dom';
 import '../styles/InputPage.css';
 import Bottom from '../components/Bottom'
 
@@ -11,7 +11,7 @@ function DropAndSubmit() {
     const [selectNum, setSelectNum] = useState(1);
 
     //QuizPage.js로 이동하기 위함
-    const history = useHistory();
+    const navigate = useNavigate();
 
     //사용자가 선택한 값을 화면에 띄우기
     const handleSelect = (e) => {
@@ -28,10 +28,15 @@ function DropAndSubmit() {
             //서버에서 받아온 Response 객체를 json 형식으로 파싱하기
             const result = await response.json();
             //QuizPage 경로의 컴포넌트에 quizData 전송 -> useLocation 사용, location.state.quizData으로 접근
-            history.push('/QuizPage', { quizData: result });
+            navigate('/QuizPage', { quizData: result });
         } catch (error) {
             console.error("There was an error sending the data!", error);
         }
+    }
+
+    //퀴즈페이지로 이동하는 테스트용
+    const handleTest = () => {
+        navigate('/QuizPage');
     }
 
     return (
@@ -41,7 +46,7 @@ function DropAndSubmit() {
                     <option key={num} value={num}> {num} </option>
                 ))}
             </select>
-            <button onClick={handleSubmit}>Go!</button>
+            <button onClick={handleTest}>Go!</button>
         </div>
     );
 }
@@ -58,7 +63,7 @@ function InputPage() {
                     <div className="InputElement3">Definition, Synonym,\n Generalization,\n Time Complexity</div>
                 </div>
                 <div className="InputNumBox">
-                    <div className="InputContent">출제할 문제 수: </div>
+                    <div className="InputContent">출제할 문제 수 : </div>
                     <DropAndSubmit/>
                 </div>
             </div>
