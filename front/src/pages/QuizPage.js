@@ -6,8 +6,8 @@ import useLocalStorage from '../hooks/useLocalStorage';
 //InputPage에서 전달받은 퀴즈데이터 렌더링, 라디오버튼
 function ShowQuiz() {
     //InputPage에서 전달받은 퀴즈데이터
-    //const location = useLocation();
-    //const quizData = location.state.quizData;
+    // const location = useLocation();
+    // const quizData = location.state.quizData;
 
     //테스트할 임시 데이터
     const quizData = [

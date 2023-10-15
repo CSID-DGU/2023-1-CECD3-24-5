@@ -23,10 +23,10 @@ function DropAndSubmit() {
         e.preventDefault();
         try {
             // API엔드포인트의 URL, num 객체 전송
-            const response = await axios.post('https://your-server-endpoint.com/data', { selectNum });
+            const response = await axios.get('https://localhost:3000/QuizPage', { params: { selectNum } });
             console.log(response.data);
-            //서버에서 받아온 Response 객체를 json 형식으로 파싱하기
-            const result = await response.json();
+            //서버에서 받아온 Response 객체는 json 형식으로 자동 파싱됨.
+            const result = await response;
             //QuizPage 경로의 컴포넌트에 quizData 전송 -> useLocation 사용, location.state.quizData으로 접근
             navigate('/QuizPage', { quizData: result });
         } catch (error) {
