@@ -1,0 +1,22 @@
+.Enter {
+  background-color: #FFFCF3;
+  color: #000;
+}
+.EnterTitle {
+  text-align: center;
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 94px;
+  letter-spacing: -1.36px;
+}
+.EnterContent {
+  color: #000;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 94px;
+  letter-spacing: -0.6px;
+}
+.EnterButton {
+  background-color: #398D78;
+}/*# sourceMappingURL=EnterPage.css.map */
