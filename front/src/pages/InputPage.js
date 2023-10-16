@@ -23,7 +23,7 @@ function DropAndSubmit() {
         e.preventDefault();
         try {
             // API엔드포인트의 URL, num 객체 전송
-            const response = await axios.get('https://localhost:3000/QuizPage', { params: { selectNum } });
+            const response = await axios.get('https://localhost:3000/create/quiz', { params: { selectNum } });
             console.log(response.data);
             //서버에서 받아온 Response 객체는 json 형식으로 자동 파싱됨.
             const result = await response;

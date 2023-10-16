@@ -1,53 +1,53 @@
 import React, {useEffect, useState} from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 //InputPage에서 전달받은 퀴즈데이터 렌더링, 라디오버튼
 function ShowQuiz() {
     //InputPage에서 전달받은 퀴즈데이터
-    // const location = useLocation();
-    // const quizData = location.state.quizData;
+    const location = useLocation();
+    const quizData = location.state.quizData;
 
     //테스트할 임시 데이터
-    const quizData = [
-        {
-            id: 1,
-            problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
-            select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
-            answer : 2
-        },
-        {
-            id: 2,
-            problem: 'Which of the following sorting algorithms is NOT stable?',
-            select : ['quick sort', 'insertion sort', 'merge sort', 'bubble sort'],
-            answer : 2
-        },
-        {
-            id: 3,
-            problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
-            select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
-            answer : 2
-        },
-        {
-            id: 4,
-            problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
-            select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
-            answer : 2
-        },
-        {
-            id: 5,
-            problem: 'Which of the following sorting algorithms is NOT stable?',
-            select : ['quick sort', 'insertion sort', 'merge sort', 'bubble sort'],
-            answer : 2
-        },
-        {
-            id: 6,
-            problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
-            select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
-            answer : 2
-        }
-    ];
+    // const quizData = [
+    //     {
+    //         id: 1,
+    //         problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
+    //         select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
+    //         answer : 2
+    //     },
+    //     {
+    //         id: 2,
+    //         problem: 'Which of the following sorting algorithms is NOT stable?',
+    //         select : ['quick sort', 'insertion sort', 'merge sort', 'bubble sort'],
+    //         answer : 2
+    //     },
+    //     {
+    //         id: 3,
+    //         problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
+    //         select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
+    //         answer : 2
+    //     },
+    //     {
+    //         id: 4,
+    //         problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
+    //         select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
+    //         answer : 2
+    //     },
+    //     {
+    //         id: 5,
+    //         problem: 'Which of the following sorting algorithms is NOT stable?',
+    //         select : ['quick sort', 'insertion sort', 'merge sort', 'bubble sort'],
+    //         answer : 2
+    //     },
+    //     {
+    //         id: 6,
+    //         problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
+    //         select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
+    //         answer : 2
+    //     }
+    // ];
     
     //InputPage로 다시 이동하기 위함
     const navigate = useNavigate();
@@ -139,3 +139,4 @@ function QuizPage() {
 }
 
 export default QuizPage;
+
