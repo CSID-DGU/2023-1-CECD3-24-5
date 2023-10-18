@@ -16,28 +16,46 @@ function DropAndSubmit() {
     //사용자가 선택한 값을 화면에 띄우기
     const handleSelect = (e) => {
         setSelectNum(e.target.selectNum);
-    }
+    };
 
     //서버에 사용자가 선택한 값(num) 전달하며 퀴즈데이터 요청 보내기
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
             // API엔드포인트의 URL, num 객체 전송
-            const response = await axios.get('https://localhost:3000/create/quiz', { params: { selectNum } });
+            const response = await axios.get('http://127.0.0.1:5000/create/quiz', { params: { 
+                scope: 1,
+                number: selectNum  // 여기에 원하는 값 혹은 변수를 넣으세요.
+            }  } );
             console.log(response.data);
+        
             //서버에서 받아온 Response 객체는 json 형식으로 자동 파싱됨.
-            const result = await response;
             //QuizPage 경로의 컴포넌트에 quizData 전송 -> useLocation 사용, location.state.quizData으로 접근
-            navigate('/QuizPage', { quizData: result });
+            if (response.data) {
+                // navigate('/QuizPage', { quizData: response.data });
+                navigate('/QuizPage', { 
+                    quizData: {
+                        id: 1,
+                        problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
+                        select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
+                        answer : 2
+                    },
+                });
+              } else {
+                console.error("Data is missing");
+              }
+              
         } catch (error) {
             console.error("There was an error sending the data!", error);
         }
-    }
+    };
 
-    //퀴즈페이지로 이동하는 테스트용
-    const handleTest = () => {
-        navigate('/QuizPage');
-    }
+    // //퀴즈페이지로 이동하는 테스트용
+    // const handleTest = () => {
+    //     navigate('/QuizPage');
+
+    // }
 
     return (
         <div>
@@ -46,7 +64,7 @@ function DropAndSubmit() {
                     <option key={num} value={num}> {num} </option>
                 ))}
             </select>
-            <button onClick={handleTest}>Go!</button>
+            <button onClick={handleSubmit}>Go!</button>
         </div>
     );
 }
