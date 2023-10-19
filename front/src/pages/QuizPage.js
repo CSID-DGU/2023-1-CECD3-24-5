@@ -3,10 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
 import useLocalStorage from '../hooks/useLocalStorage';
 
-import axios from 'axios';
-
-//InputPage에서 전달받은 퀴즈데이터 렌더링, 라디오버튼
 function ShowQuiz() {
+    //InputPage로 다시 이동하기 위함
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    const quizData = location.state || [];
 
     //테스트할 임시 데이터
     // const quizData = [
@@ -47,12 +49,8 @@ function ShowQuiz() {
     //         answer : 2
     //     }
     // ];
-    
-    //InputPage로 다시 이동하기 위함
-    const navigate = useNavigate();
 
-    const location = useLocation();
-    const quizData = location.state ? location.state.quizData : [];
+
 
     //사용자의 답 관리. selectopt = { 문제번호 : 선택지의 인덱스 }
     const [selectOpt, setSelectOpt] = useLocalStorage('selectOpt', {});
@@ -63,6 +61,7 @@ function ShowQuiz() {
     //정답 확인하기 버튼을 눌렀는지 확인하는 상태
     //사용자가 답을 체크한 후, 상태를 localStorage에 저장 -> 새로고침 해도 checkedAnswer == true인 상태를 로드
     const [checkedAnswer, setCheckedAnswer] = useLocalStorage('checkedAnswer', false);
+
 
     const handleSelect = (quizId, optionIndex) => {
         setSelectOpt(prevState => ({ ...prevState, [quizId] : optionIndex}));
@@ -132,38 +131,13 @@ function ShowQuiz() {
     );
 }
 
-function QuizPage() {
-    // try {
-    //     // API엔드포인트의 URL, num 객체 전송
-    //     const response = await axios.get('http://127.0.0.1:5000/create/quiz', { params: { 
-    //         scope: 1,
-    //         number: selectNum  // 여기에 원하는 값 혹은 변수를 넣으세요.
-    //     }  } );
-    //     console.log(response.data);
-    
-    //     //서버에서 받아온 Response 객체는 json 형식으로 자동 파싱됨.
-    //     //QuizPage 경로의 컴포넌트에 quizData 전송 -> useLocation 사용, location.state.quizData으로 접근
-    //     if (response.data) {
-    //         // navigate('/QuizPage', { quizData: response.data });
-    //         navigate('/QuizPage', { 
-    //             quizData: {
-    //                 id: 1,
-    //                 problem : 'What is the time complexity of Bubble Sort in the worst-case scenario?',
-    //                 select : ['O(n^2)', 'O(n log n)', 'O(n)', 'O(1)'],
-    //                 answer : 2
-    //             },
-    //         });
-    //       } else {
-    //         console.error("Data is missing");
-    //       }
-          
-    // } catch (error) {
-    //     console.error("There was an error sending the data!", error);
-    // }
 
+
+
+function QuizPage() {
     return (
         <>
-            <ShowQuiz/>
+            {<ShowQuiz />}
         </>
     );
 }
