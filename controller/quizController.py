@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS
 
 import sys
 import os
@@ -7,9 +8,10 @@ import os
 current_path = os.path.dirname(os.path.abspath(__file__))
 
 sys.path.append(os.path.join(current_path, '../service'))
-from quizService import *
+from quizService import * 
 
 app = Flask(__name__)
+CORS(app)
 
 
 #템플릿 API
@@ -33,6 +35,7 @@ def fetchQuizsController():
     if scope is None or number is None:
         return 'scope와 number 쿼리 매개변수가 필요합니다.'
     
+    # return "hello"
     return jsonify(
         CreateQuizsService.createQuizs(
             scope,

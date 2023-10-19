@@ -4,7 +4,7 @@
 
 import random
 
-class quiz:
+class Quiz:
 
     def __init__(self,number,problem,select,answer):
         self.number = number

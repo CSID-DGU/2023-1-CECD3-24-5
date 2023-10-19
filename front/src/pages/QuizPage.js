@@ -3,11 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
 import useLocalStorage from '../hooks/useLocalStorage';
 
-//InputPage에서 전달받은 퀴즈데이터 렌더링, 라디오버튼
 function ShowQuiz() {
-    //InputPage에서 전달받은 퀴즈데이터
+    //InputPage로 다시 이동하기 위함
+    const navigate = useNavigate();
+
     const location = useLocation();
-    const quizData = location.state.quizData;
+    const quizData = location.state || [];
 
     //테스트할 임시 데이터
     // const quizData = [
@@ -48,9 +49,8 @@ function ShowQuiz() {
     //         answer : 2
     //     }
     // ];
-    
-    //InputPage로 다시 이동하기 위함
-    const navigate = useNavigate();
+
+
 
     //사용자의 답 관리. selectopt = { 문제번호 : 선택지의 인덱스 }
     const [selectOpt, setSelectOpt] = useLocalStorage('selectOpt', {});
@@ -61,6 +61,7 @@ function ShowQuiz() {
     //정답 확인하기 버튼을 눌렀는지 확인하는 상태
     //사용자가 답을 체크한 후, 상태를 localStorage에 저장 -> 새로고침 해도 checkedAnswer == true인 상태를 로드
     const [checkedAnswer, setCheckedAnswer] = useLocalStorage('checkedAnswer', false);
+
 
     const handleSelect = (quizId, optionIndex) => {
         setSelectOpt(prevState => ({ ...prevState, [quizId] : optionIndex}));
@@ -130,10 +131,13 @@ function ShowQuiz() {
     );
 }
 
+
+
+
 function QuizPage() {
     return (
         <>
-            <ShowQuiz/>
+            {<ShowQuiz />}
         </>
     );
 }
