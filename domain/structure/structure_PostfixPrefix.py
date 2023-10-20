@@ -2,6 +2,7 @@ from z3 import *
 import random
 from structure_Node import Node
 
+
 '''
 class Node:
     def __init__(self, value_var):
