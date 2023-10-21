@@ -10,9 +10,14 @@ current_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(current_path, '../service'))
 from quizService import * 
 
-app = Flask(__name__)
+#app에서 static 폴더를 React의 build 폴더로 설정
+app = Flask(__name__, static_folder='../front/build', static_url_path='/')
 CORS(app)
 
+#메인 페이지 라우팅
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 #템플릿 API
 @app.route('/home', methods=['GET'])
