@@ -13,9 +13,9 @@ import os
 current_path = os.path.dirname(os.path.abspath(__file__))
 
 sys.path.append(os.path.join(current_path, '../structure'))
-from structure_NormalTree import NormalTree
-from structure_MinHeap import MinHeap
-from structure_BST import BST
+from structure.structure_NormalTree import NormalTree
+from structure.structure_MinHeap import MinHeap
+from structure.structure_BST import BST
 
 class quiz_BstHeapNormalTree:
     def __init__(self):
