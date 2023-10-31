@@ -1,10 +1,6 @@
 from flask import Flask, jsonify, request, render_template
 from service.CreateQuizsService import *
 
-
-test=CreateQuizsService()
-print(test.createQuizs(4))
-
 app = Flask(__name__)
 
 
