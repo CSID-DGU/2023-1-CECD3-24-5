@@ -30,15 +30,18 @@ class quiz_BstHeapNormalTree:
         if selected_tree_type=='Normal':
             normal=NormalTree()
             select[0]='Normal 트리'
+            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(normal.a.value,normal.b.value,normal.c.value,normal.d.value,normal.e.value,normal.f.value,normal.g.value,normal.h.value,normal.i.value)
         elif selected_tree_type=='BST':
             bst=BST()
             select[0]='이진 탐색 트리'
+            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(bst.a.value,bst.b.value,bst.c.value,bst.d.value,bst.e.value,bst.f.value,bst.g.value,bst.h.value,bst.i.value)
         else:
             minHeap=MinHeap()
             select[0]='최소 힙 트리'
-        
+            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(minHeap.a.value,minHeap.b.value,minHeap.c.value,minHeap.d.value,minHeap.e.value,minHeap.f.value,minHeap.g.value,minHeap.h.value,minHeap.i.value)
         for item in all_value:
             if item != select[0]:
                 select.append(item)
+    
         
         self.quiz=quiz(number,problem,select,answer)
