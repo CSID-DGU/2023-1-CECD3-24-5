@@ -1,6 +1,10 @@
 from flask import Flask, jsonify, request, render_template
 from service.CreateQuizsService import *
 
+
+test=CreateQuizsService()
+print(test.createQuizs(4))
+
 app = Flask(__name__)
 
 
@@ -34,3 +38,5 @@ def fetchQuizsController():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
+

@@ -69,12 +69,12 @@ class MinHeap:
         # 가능한 해 중 하나를 무작위로 선택
         selected_model = random.choice(minHeap_models)
 
-        self.a=selected_model[self.a.value]
-        self.b=selected_model[self.b.value]
-        self.c=selected_model[self.c.value]
-        self.d=selected_model[self.d.value]
-        self.e=selected_model[self.e.value]
-        self.f=selected_model[self.f.value]
-        self.g=selected_model[self.g.value]
-        self.h=selected_model[self.h.value]
-        self.i=selected_model[self.i.value]
+        self.a=selected_model[self.a.value].as_long()
+        self.b=selected_model[self.b.value].as_long()
+        self.c=selected_model[self.c.value].as_long()
+        self.d=selected_model[self.d.value].as_long()
+        self.e=selected_model[self.e.value].as_long()
+        self.f=selected_model[self.f.value].as_long()
+        self.g=selected_model[self.g.value].as_long()
+        self.h=selected_model[self.h.value].as_long()
+        self.i=selected_model[self.i.value].as_long()
