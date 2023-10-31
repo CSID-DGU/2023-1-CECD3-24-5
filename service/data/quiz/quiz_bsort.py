@@ -8,7 +8,7 @@ current_path = os.path.dirname(os.path.abspath(__file__))
 
 # structure 디렉토리의 경로를 sys.path에 추가
 sys.path.append(os.path.join(current_path, '../structure'))
-from structure.structure_bsort_list import *
+from structure_bsort_list import *
 
 class quiz_bsort:
 

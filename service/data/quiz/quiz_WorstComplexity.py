@@ -7,7 +7,7 @@ import os
 # 현재 스크립트의 경로를 가져옴
 current_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(current_path, '../concept'))
-from concept.WorstComplexity import *
+from WorstComplexity import *
 
 class quiz_WorstComplexity:
     def __init__(self):
