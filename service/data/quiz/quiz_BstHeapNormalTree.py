@@ -29,7 +29,7 @@ class quiz_BstHeapNormalTree:
         selected_tree_type=random.choice(all_value)
         if selected_tree_type=='Normal':
             normal=NormalTree()
-            select[0]='Normal 트리'
+            select[0]='Normal'
             problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(normal.a,normal.b,normal.c,normal.d,normal.e,normal.f,normal.g,normal.h,normal.i)
         elif selected_tree_type=='BST':
             bst=BST()
