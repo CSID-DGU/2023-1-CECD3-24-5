@@ -22,10 +22,7 @@ function DropAndSubmit() {
     const handleSubmit = async(selectNum) => {
         try {
             // API엔드포인트의 URL, num 객체 전송
-            const response = await axios.get('http://127.0.0.1:5000/create/quiz', { params: { 
-                scope: 1,
-                number: selectNum  // 여기에 원하는 값 혹은 변수를 넣으세요.
-            }  } );
+            const response = await axios.get('http://127.0.0.1:5000/create/quiz', { params: { number: selectNum }  } );
             console.log(response.data);
         
             //서버에서 받아온 Response 객체는 json 형식으로 자동 파싱됨.
