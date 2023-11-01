@@ -23,7 +23,7 @@ class quiz_BstHeapNormalTree:
     def setQuiz(self,num):
         number=num
         problem="아래 자료구조는 (트리, BST, Heap, Red-Black 트리) 중 하나이다. 해당되는 자료구조를 선택하시오."
-        select=["","","",""]
+        select=["Red-Black Tree"]
         answer=0
         all_value=['Normal','BST','Heap']
         selected_tree_type=random.choice(all_value)
