@@ -73,13 +73,13 @@ function ShowQuiz() {
 
         quizData.forEach(quiz => {
             //사용자가 해당 문제에 대해 선택한 답이 있다면 -> 사용자가 모두 답을 선택해야만 버튼 누를수 있게 바꾸기
-            if (selectOpt[quiz.id] !== undefined) {
+            if (selectOpt[quiz.number] !== undefined) {
                 //선택한 답과 정답이 일치한다면
-                if (selectOpt[quiz.id] === quiz.answer) {
+                if (selectOpt[quiz.number] === quiz.answer) {
                     correct++;
                 }
                 else { //일치하지 않는다면
-                    wrongs[quiz.id] = true;
+                    wrongs[quiz.number] = true;
                 }
             }
         })
@@ -102,20 +102,22 @@ function ShowQuiz() {
             }
             <div className="quizBox">
                 {quizData.map((quiz) => (
-                    <div className= "quizContainer" key={quiz.id}>
-                        <h3 style={wrongAnswers[quiz.id] ? {color: 'red'} : {}}>{quiz.id}. {quiz.problem}</h3>
+                    <div className= "quizContainer" key={quiz.number}>
+                        <h3 style={wrongAnswers[quiz.number] ? {color: 'red'} : {}}>{quiz.number}. {quiz.problem}</h3>
                         {quiz.select.map((option, index) => (
-                            <label key={index} className="quizOption" style={wrongAnswers[quiz.id] && index === quiz.answer ? {color: 'red'} : {}}>
+                            // <div className="selectBox">
+                            <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
                                 <input
                                     type="radio"
-                                    name={`quiz-${quiz.id}`}
+                                    name={`quiz-${quiz.number}`}
                                     value={index}
-                                    onChange={() => handleSelect(quiz.id, index)}
+                                    onChange={() => handleSelect(quiz.number, index)}
                                     disabled={checkedAnswer}
-                                    checked={selectOpt[quiz.id] === index}
+                                    checked={selectOpt[quiz.number] === index}
                                 /> 
                                 {option}
                             </label>
+                            // </div>
                         ))}
                     </div>
                 ))}

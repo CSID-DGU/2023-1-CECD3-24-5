@@ -23,13 +23,20 @@ span {
 }
 
 .quizContainer {
-    height: 300px;
+    /* 퀴즈 박스 수정할때 이거 참고하기 */
+    height: 600px;
     margin-top: 10%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
 }
+
+/* .selectBox{
+    height: 50px;
+    background-color: #398D78;
+    margin-top: 10%
+} */
 
 .quizOption {
     margin-top: 5%;
