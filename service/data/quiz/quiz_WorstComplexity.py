@@ -1,4 +1,5 @@
 from z3 import *
+#from quiz import *
 from service.data.quiz.quiz import *
 import random
 import sys
@@ -18,7 +19,7 @@ class quiz_WorstComplexity:
         algoName=random.choice(instance.model)
         problem=f"{algoName}의 최악 시간 복잡도로 올바른 것을 고르시오"
         select=[]
-        select.append(instance.model[Const(str(algoName), instance.concept)])
+        select.append(str(instance.model[Const(str(algoName), instance.concept)]))
         select.append("")
         select.append("")
         select.append("")
