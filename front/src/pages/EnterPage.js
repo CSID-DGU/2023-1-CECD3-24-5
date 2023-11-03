@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Navigate, useNavigate } from 'react-router-dom';
 import '../styles/EnterPage.css';
+import { Button, Flex } from 'antd';
 import Bottom from '../components/Bottom'
 
 function EnterPage() {
@@ -15,11 +16,13 @@ function EnterPage() {
             <div className="EnterContentBox">
                 <div className="EnterTitle">Automatic Quiz Generalization</div>
                 <div className="EnterContent">당신의 지식을 테스트해보세요!</div>
-                <button className='EnterButton' onClick={handleStart}>Start</button>
+                <Button type="primary" className='EnterButton' onClick={handleStart}>Start</Button>
+                {/* <button className='EnterButton' onClick={handleStart}>Start</button> */}
             </div>
             <Bottom />
         </div>
     );
 }
+
 
 export default EnterPage;

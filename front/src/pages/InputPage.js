@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { Navigate, useNavigate} from 'react-router-dom';
 import '../styles/InputPage.css';
+import { Button, Flex } from 'antd';
+
 import Bottom from '../components/Bottom'
 
 import axios from 'axios';
