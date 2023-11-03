@@ -22,14 +22,14 @@ class quiz_BstHeapNormalTree:
         self.quiz=None
     def setQuiz(self,num):
         number=num
-        problem="아래 자료구조는 (트리, BST, Heap, Red-Black 트리) 중 하나이다. 해당되는 자료구조를 선택하시오."
+        problem="아래 자료구조는 (일반 트리, 이진 탐색 트리, 최소 힙, Red-Black 트리) 중 하나이다. 해당되는 자료구조를 선택하시오."
         select=[""]
         answer=0
-        all_value=['Normal','BST','Heap','Red-Black Tree']
+        all_value=['일반 트리','이진 탐색 트리','최소 힙','Red-Black 트리']
         selected_tree_type=random.choice(all_value)
         if selected_tree_type=='Normal':
             normal=NormalTree()
-            select[0]='Normal'
+            select[0]='일반 트리'
             problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(normal.a,normal.b,normal.c,normal.d,normal.e,normal.f,normal.g,normal.h,normal.i)
         elif selected_tree_type=='BST':
             bst=BST()
@@ -37,7 +37,7 @@ class quiz_BstHeapNormalTree:
             problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(bst.a,bst.b,bst.c,bst.d,bst.e,bst.f,bst.g,bst.h,bst.i)
         else:
             minHeap=MinHeap()
-            select[0]='최소 힙 트리'
+            select[0]='최소 힙'
             problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(minHeap.a,minHeap.b,minHeap.c,minHeap.d,minHeap.e,minHeap.f,minHeap.g,minHeap.h,minHeap.i)
         for item in all_value:
             if item != select[0]:
