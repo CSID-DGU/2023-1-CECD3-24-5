@@ -1,8 +1,6 @@
 ## 2023-1-CECD3-24-5
 ------
-vm/Scripts/activate.bat 실행하여 가상 환경에서 동작 
-python manage.py runserver으로 실행
-------
+
 2023년 1학기 동국대학교 컴퓨터공학종합설계 스물넷팀
 
 
