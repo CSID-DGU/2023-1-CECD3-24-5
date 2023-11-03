@@ -82,6 +82,9 @@ function ShowQuiz() {
                     wrongs[quiz.number] = true;
                 }
             }
+            else {
+                wrongs[quiz.number] = true;
+            }
         })
 
         setCorrectCnt(correct);
@@ -106,17 +109,17 @@ function ShowQuiz() {
                         <h3 style={wrongAnswers[quiz.number] ? {color: 'red'} : {}}>{quiz.number}. {quiz.problem}</h3>
                         {quiz.select.map((option, index) => (
                             // <div className="selectBox">
-                            <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
-                                <input
-                                    type="radio"
-                                    name={`quiz-${quiz.number}`}
-                                    value={index}
-                                    onChange={() => handleSelect(quiz.number, index)}
-                                    disabled={checkedAnswer}
-                                    checked={selectOpt[quiz.number] === index}
-                                /> 
-                                {option}
-                            </label>
+                                <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
+                                    <input
+                                        type="radio"
+                                        name={`quiz-${quiz.number}`}
+                                        value={index}
+                                        onChange={() => handleSelect(quiz.number, index)}
+                                        disabled={checkedAnswer}
+                                        checked={selectOpt[quiz.number] === index}
+                                    /> 
+                                    {option}
+                                </label>
                             // </div>
                         ))}
                     </div>
