@@ -9,6 +9,7 @@ import os
 current_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(current_path, '../concept'))
 from WorstComplexity import *
+from Enum import *
 
 class quiz_WorstComplexity:
     def __init__(self):
@@ -25,3 +26,7 @@ class quiz_WorstComplexity:
                 select.append(i)
         answer=0
         self.quiz=quiz(number,problem,select,answer)
+
+        del instance
+        import gc
+        gc.collect()
