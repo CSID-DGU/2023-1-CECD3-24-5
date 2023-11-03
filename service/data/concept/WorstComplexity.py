@@ -1,16 +1,11 @@
 from z3 import *
+from Enum import *
 
 # Z3에서 제공하는 열거형 생성. 사용 방식: '열거형의 타입이 담길 변수' , '(열거형의 값의 변수들, , ...)' = EnumSort('열거형 이름', ['값1','값2','값3'...])
 # 이렇게하면 이후에 Const로 정의되는 z3 변수는 저 값들 중 하나의 값만 가질 수 있음.
 
 class WorstComplexity:
     def __init__(self):
-        Complexities, (On2, Onlogn, Onplusk, Owkn) = EnumSort('Complexities', [
-            'On2',
-            'Onlogn',
-            'Onplusk',
-            'Owkn'
-        ])
         self.values=['On2','Onlogn','Onplusk','Owkn']
         self.concept=Complexities
         # 각 알고리즘에 대한 변수 생성 및 시간복잡도 설정
