@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
-import { Navigate, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
+import {useNavigate} from 'react-router-dom';
+
 import '../styles/InputPage.css';
-import { Button, Flex } from 'antd';
+import { Button, Select } from 'antd';
 
 import Bottom from '../components/Bottom'
 
@@ -9,6 +10,7 @@ import axios from 'axios';
 
 
 function DropAndSubmit() {
+    const { Option } = Select;
     //사용자가 드롭다운바에서 선택한 숫자 상태 관리
     const [selectNum, setSelectNum] = useState(1);
 
@@ -49,14 +51,14 @@ function DropAndSubmit() {
     };
 
     return (
-        <div>
-            <select value={selectNum} onChange={handleSelect} >
+        <>
+            <Select defaultValue={selectNum} onChange={handleSelect} style={{width : 120}} listHeight={200}>
                 {Array.from ({length:30}, (_, i) => i + 1).map((num) => (
-                    <option key={num} value={num}> {num} </option>
+                    <Option key={num} value={num}> {num} </Option>
                 ))}
-            </select>
-            <button onClick={() => handleSubmit(selectNum)}>Go!</button>
-        </div>
+            </Select>
+            <Button type="primary" className="InputButton" onClick={() => handleSubmit(selectNum)}>Go!</Button>
+        </>
     );
 }
 
@@ -67,9 +69,9 @@ function InputPage() {
             <div className="InputContentBox">
                 <div className="InputTitle">다음과 같은 내용의 문제가 출제됩니다</div>
                 <div className="InputContainer">
-                    <div className="InputElement1">Data Structure\n& Algorithms</div>
-                    <div className="InputElement2">Basic\n& Sorting/Searching</div>
-                    <div className="InputElement3">Definition, Synonym,\n Generalization,\n Time Complexity</div>
+                    <div className="InputElement">Data Structure<br/>&amp; Algorithms</div>
+                    <div className="InputElement">Basic &amp;<br/>Sorting/Searching</div>
+                    <div className="InputElement">Definition, Synonym,<br/> Generalization,<br/> Time Complexity</div>
                 </div>
                 <div className="InputNumBox">
                     <div className="InputContent">출제할 문제 수 : </div>

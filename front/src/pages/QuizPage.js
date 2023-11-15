@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
 import useLocalStorage from '../hooks/useLocalStorage';
 
+import { Radio } from 'antd';
+
 function ShowQuiz() {
     //InputPage로 다시 이동하기 위함
     const navigate = useNavigate();
@@ -101,7 +103,7 @@ function ShowQuiz() {
     return (
         <>
             {checkedAnswer && 
-                <h1 className="answerText"> <span>{quizData.length} 문제</span> 중 <span>{correctCnt} 문제</span> 맞았습니다! </h1>
+                <h1 className="answerText"> <span className="quizAnswer">{quizData.length} 문제</span> 중 <span>{correctCnt} 문제</span> 맞았습니다! </h1>
             }
             <div className="quizBox">
                 {quizData.map((quiz) => (
@@ -110,13 +112,16 @@ function ShowQuiz() {
                         {quiz.select.map((option, index) => (
                             // <div className="selectBox">
                                 <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
-                                    <input
-                                        type="radio"
+                                    <Radio
                                         name={`quiz-${quiz.number}`}
                                         value={index}
                                         onChange={() => handleSelect(quiz.number, index)}
                                         disabled={checkedAnswer}
                                         checked={selectOpt[quiz.number] === index}
+                                        style={{
+                                            marginRight: "15px",
+                                            // ...(wrongAnswers[quiz.number] && index === quiz.answer ? { backgroundColor: 'red' } : {})
+                                          }}
                                     /> 
                                     {option}
                                 </label>
