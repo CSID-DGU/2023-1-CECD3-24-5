@@ -2,12 +2,12 @@ from z3 import *
 import random
 from service.data.quiz.quiz import *
 
-class quiz_circularQueue:
+class quiz_circularQueueE:
     def __init__(self):
         self.quiz=None
     def setQuiz(self,num):
         number=num
-        problem="다음 순환 큐가 Full이 되기 위해 필요한 enqueue 연산의 횟수를 구하시오."
+        problem="다음 순환 큐가 Empty가 되기 위해 필요한 dequeue 연산의 횟수를 구하시오."
         select=[""]
         answer=0
 
@@ -25,18 +25,20 @@ class quiz_circularQueue:
 
         s = Solver()
 
-        num_enqueues = Int('num_enqueues') #enqueue 연산 횟수
+        num_dequeues = Int('num_dequeues') #dequeue 연산 횟수
 
-        s.add((rear + num_enqueues) % queue_size == (front - 1) % queue_size) #queue가 가득 차는 조건
+        s.add((front - num_dequeues) % queue_size == (rear) % queue_size) #queue가 비는 조건
 
-        s.add(num_enqueues >= 0) #enqueue 연산 횟수는 0 이상
+        s.add(num_dequeues > 0) #enqueue 연산 횟수는 0 이상
+
+        
 
         if s.check() == sat:
             m = s.model()
-            select[0] = (str(m[num_enqueues]))
-            select.append(int(str(m[num_enqueues]))+1)
-            select.append(int(str(m[num_enqueues]))-1)
-            select.append(int(str(m[num_enqueues]))+2)
+            select[0] = (str(m[num_dequeues]))
+            select.append(int(str(m[num_dequeues]))+1)
+            select.append(int(str(m[num_dequeues]))-1)
+            select.append(int(str(m[num_dequeues]))+2)
             self.quiz=quiz(number,problem,select,answer)
         else:
             print("해를 찾을 수 없습니다.")
