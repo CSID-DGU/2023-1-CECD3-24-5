@@ -18,15 +18,15 @@ function DropAndSubmit() {
     const navigate = useNavigate();
 
     //사용자가 선택한 값을 화면에 띄우기
-    const handleSelect = (e) => {
-        setSelectNum(e.target.value);
+    const handleSelect = (value) => {
+        setSelectNum(value);
     };
 
     //서버에 사용자가 선택한 값(num) 전달하며 퀴즈데이터 요청 보내기
     const handleSubmit = async(selectNum) => {
         try {
             // API엔드포인트의 URL, num 객체 전송
-            const response = await axios.get('http://127.0.0.1:5000/create/quiz', { params: { number: selectNum }  } );
+            const response = await axios.get('/create/quiz', { params: { number: selectNum }  } );
             console.log(response.data);
         
             //서버에서 받아온 Response 객체는 json 형식으로 자동 파싱됨.

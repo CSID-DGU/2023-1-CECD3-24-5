@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import { Navigate, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from 'react-router-dom';
 import '../styles/EnterPage.css';
-import { Button, Flex } from 'antd';
+import {Button} from 'antd';
 import Bottom from '../components/Bottom'
 
 function EnterPage() {

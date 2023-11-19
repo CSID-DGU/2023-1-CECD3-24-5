@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -101,14 +101,14 @@ function ShowQuiz() {
     };
 
     return (
-        <>
+        <div className="OuterBox">
             {checkedAnswer && 
                 <h1 className="answerText"> <span className="quizAnswer">{quizData.length} 문제</span> 중 <span>{correctCnt} 문제</span> 맞았습니다! </h1>
             }
             <div className="quizBox">
                 {quizData.map((quiz) => (
                     <div className= "quizContainer" key={quiz.number}>
-                        <h3 style={wrongAnswers[quiz.number] ? {color: 'red'} : {}}>{quiz.number}. {quiz.problem}</h3>
+                        <h3 className="problemText" style={wrongAnswers[quiz.number] ? {color: 'red'} : {}}>{quiz.number}. {quiz.problem}</h3>
                         {quiz.select.map((option, index) => (
                             // <div className="selectBox">
                                 <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
@@ -137,7 +137,7 @@ function ShowQuiz() {
                     <button onClick={handleAnswer}>정답 확인하기</button>
                 )}
             </div>
-        </>
+        </div>
     );
 }
 

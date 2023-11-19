@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
-import useLocalStorage from '../hooks/useLocalStorage';
 
 function Header() {
     const navigate = useNavigate();
