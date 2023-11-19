@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request, render_template
 from service.CreateQuizsService import *
-from flask_cors import CORS
 
 import sys
 import os
@@ -12,7 +11,6 @@ sys.path.append(os.path.join(current_path, 'service'))
 
 #app에서 static 폴더를 React의 build 폴더로 설정
 app = Flask(__name__, static_folder='front/build', static_url_path='/')
-CORS(app)
 
 #메인 페이지 라우팅
 @app.route('/')
