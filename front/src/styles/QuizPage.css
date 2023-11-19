@@ -1,3 +1,10 @@
+.OuterBox {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .quizAnswer {
     color: #398D78;
 }
@@ -16,7 +23,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 /* 
     margin-left: 30%;
     margin-right: 30%; */
@@ -26,7 +33,6 @@
 .quizContainer {
     /* 퀴즈 박스 수정할때 이거 참고하기 */
     height: 600px;
-    margin-top: 10%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -39,9 +45,15 @@
     margin-top: 10%
 } */
 
+.problemText {
+    margin-left:3%;
+    margin-right:3%;
+}
+
 .quizOption {
     margin-top: 2%;
-    margin-left: 3%;
+    margin-left: 5%;
+    margin-right:3%;
     border-radius: 3px;
     border: 1px solid #D9D9D9;
     height: 50px;
