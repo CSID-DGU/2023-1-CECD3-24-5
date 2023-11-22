@@ -1,0 +1,55 @@
+.treeNode {
+    position: relative; /* 자식 요소의 위치를 기준으로 설정 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* 각 노드 사이의 간격 */
+    padding-top: 20px;
+}
+
+.treeNode::before {
+    content: '';
+    display: block;
+    width: 2px; /* 선의 두께 */
+    height: 20px; /* 노드의 위쪽에 위치할 선의 길이 */
+    background-color: black;
+    margin-left: -1px; /* 선을 가운데 정렬하기 위해 필요할 수 있음 */
+    margin-top: -20px; /* 선을 노드의 상단에 위치시키기 위해 필요 */
+}
+
+.children {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+
+.child {
+    position: relative;
+    margin: 10px 15px; /* 자식 노드 간의 간격 */
+}
+
+
+
+.child:first-child::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%; /* 첫 번째 자식의 중앙에서 왼쪽으로 절반 */
+    height: 20px;
+    background-color: black;
+    transform: translateX(-100%); /* 왼쪽으로 전체 너비만큼 이동 */
+}
+
+.child:last-child::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 50%; /* 마지막 자식의 중앙에서 오른쪽으로 절반 */
+    height: 20px;
+    background-color: black;
+    transform: translateX(50%); /* 오른쪽으로 50% 이동 */
+}
