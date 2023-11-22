@@ -41,5 +41,3 @@ class WorstComplexity:
             #print(model[Const("선택정렬", self.concept)]) -> On2
             #print(model[0]) -> 선택정렬
 
-
-# 테스트

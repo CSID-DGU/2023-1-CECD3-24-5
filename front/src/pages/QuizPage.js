@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
 import useLocalStorage from '../hooks/useLocalStorage';
 
-//InputPage에서 전달받은 퀴즈데이터 렌더링, 라디오버튼
+import { Radio } from 'antd';
+
 function ShowQuiz() {
-    //InputPage에서 전달받은 퀴즈데이터
+    //InputPage로 다시 이동하기 위함
+    const navigate = useNavigate();
+
     const location = useLocation();
-    const quizData = location.state.quizData;
+    const quizData = location.state || [];
 
     //테스트할 임시 데이터
     // const quizData = [
@@ -48,9 +51,8 @@ function ShowQuiz() {
     //         answer : 2
     //     }
     // ];
-    
-    //InputPage로 다시 이동하기 위함
-    const navigate = useNavigate();
+
+
 
     //사용자의 답 관리. selectopt = { 문제번호 : 선택지의 인덱스 }
     const [selectOpt, setSelectOpt] = useLocalStorage('selectOpt', {});
@@ -62,6 +64,7 @@ function ShowQuiz() {
     //사용자가 답을 체크한 후, 상태를 localStorage에 저장 -> 새로고침 해도 checkedAnswer == true인 상태를 로드
     const [checkedAnswer, setCheckedAnswer] = useLocalStorage('checkedAnswer', false);
 
+
     const handleSelect = (quizId, optionIndex) => {
         setSelectOpt(prevState => ({ ...prevState, [quizId] : optionIndex}));
     }
@@ -72,14 +75,17 @@ function ShowQuiz() {
 
         quizData.forEach(quiz => {
             //사용자가 해당 문제에 대해 선택한 답이 있다면 -> 사용자가 모두 답을 선택해야만 버튼 누를수 있게 바꾸기
-            if (selectOpt[quiz.id] !== undefined) {
+            if (selectOpt[quiz.number] !== undefined) {
                 //선택한 답과 정답이 일치한다면
-                if (selectOpt[quiz.id] === quiz.answer) {
+                if (selectOpt[quiz.number] === quiz.answer) {
                     correct++;
                 }
                 else { //일치하지 않는다면
-                    wrongs[quiz.id] = true;
+                    wrongs[quiz.number] = true;
                 }
+            }
+            else {
+                wrongs[quiz.number] = true;
             }
         })
 
@@ -95,26 +101,31 @@ function ShowQuiz() {
     };
 
     return (
-        <>
+        <div className="OuterBox">
             {checkedAnswer && 
-                <h1 className="answerText"> <span>{quizData.length} 문제</span> 중 <span>{correctCnt} 문제</span> 맞았습니다! </h1>
+                <h1 className="answerText"> <span className="quizAnswer">{quizData.length} 문제</span> 중 <span>{correctCnt} 문제</span> 맞았습니다! </h1>
             }
             <div className="quizBox">
                 {quizData.map((quiz) => (
-                    <div className= "quizContainer" key={quiz.id}>
-                        <h3 style={wrongAnswers[quiz.id] ? {color: 'red'} : {}}>{quiz.id}. {quiz.problem}</h3>
+                    <div className= "quizContainer" key={quiz.number}>
+                        <h3 className="problemText" style={wrongAnswers[quiz.number] ? {color: 'red'} : {}}>{quiz.number}. {quiz.problem}</h3>
                         {quiz.select.map((option, index) => (
-                            <label key={index} className="quizOption" style={wrongAnswers[quiz.id] && index === quiz.answer ? {color: 'red'} : {}}>
-                                <input
-                                    type="radio"
-                                    name={`quiz-${quiz.id}`}
-                                    value={index}
-                                    onChange={() => handleSelect(quiz.id, index)}
-                                    disabled={checkedAnswer}
-                                    checked={selectOpt[quiz.id] === index}
-                                /> 
-                                {option}
-                            </label>
+                            // <div className="selectBox">
+                                <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
+                                    <Radio
+                                        name={`quiz-${quiz.number}`}
+                                        value={index}
+                                        onChange={() => handleSelect(quiz.number, index)}
+                                        disabled={checkedAnswer}
+                                        checked={selectOpt[quiz.number] === index}
+                                        style={{
+                                            marginRight: "15px",
+                                            // ...(wrongAnswers[quiz.number] && index === quiz.answer ? { backgroundColor: 'red' } : {})
+                                          }}
+                                    /> 
+                                    {option}
+                                </label>
+                            // </div>
                         ))}
                     </div>
                 ))}
@@ -126,14 +137,17 @@ function ShowQuiz() {
                     <button onClick={handleAnswer}>정답 확인하기</button>
                 )}
             </div>
-        </>
+        </div>
     );
 }
+
+
+
 
 function QuizPage() {
     return (
         <>
-            <ShowQuiz/>
+            {<ShowQuiz />}
         </>
     );
 }
