@@ -4,6 +4,7 @@ from service.data.quiz.quiz_PostfixPrefix import *
 from service.data.quiz.quiz_WorstComplexity import *
 from service.data.quiz.quiz_circularQueueF import *
 from service.data.quiz.quiz_circularQueueE import *
+from service.data.quiz.quiz_findElementInStack import *
 
 class CreateQuizsService:
 
@@ -16,12 +17,15 @@ class CreateQuizsService:
         WorstComplexity=quiz_WorstComplexity()
         circularQueueF=quiz_circularQueueF()
         circularQueueE=quiz_circularQueueE()
+        findElementInStack=quiz_findElementInStack()
+
         self.candidate.append(bsort)
         self.candidate.append(BSTHeapNormal)
         self.candidate.append(PostfixPrefix)
         self.candidate.append(WorstComplexity)
         self.candidate.append(circularQueueF)
         self.candidate.append(circularQueueE)
+        self.candidate.append(findElementInStack)
 
     def createQuizs(self, number):
         for i in range(0, int(number)):

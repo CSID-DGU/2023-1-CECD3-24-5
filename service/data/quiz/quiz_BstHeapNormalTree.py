@@ -45,3 +45,4 @@ class quiz_BstHeapNormalTree:
     
         
         self.quiz=quiz(number,problem,select,answer)
+        self.quiz.setType(2)
