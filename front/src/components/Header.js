@@ -4,10 +4,7 @@ import '../styles/Header.css';
 
 function Header() {
     const navigate = useNavigate();
-    const handleEnter = () => {
-        localStorage.clear();
-        navigate(`/`);
-    };
+    const handleEnter = () => {navigate(`/`);};
 
     return (
         <div className='HeaderBox'>
