@@ -1,6 +1,10 @@
 import React from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
+// import BinaryTree from '../components/BinaryTree.jsx';
+import tree1 from '../resources/tree1.png';
+import tree2 from '../resources/tree2.png';
+
 import useLocalStorage from '../hooks/useLocalStorage';
 
 import { Radio } from 'antd';
@@ -64,6 +68,8 @@ function ShowQuiz() {
     //사용자가 답을 체크한 후, 상태를 localStorage에 저장 -> 새로고침 해도 checkedAnswer == true인 상태를 로드
     const [checkedAnswer, setCheckedAnswer] = useLocalStorage('checkedAnswer', false);
 
+    // const values = [-4, -1, -3, 0, 4, -2, 3, 2, 1];
+
 
     const handleSelect = (quizId, optionIndex) => {
         setSelectOpt(prevState => ({ ...prevState, [quizId] : optionIndex}));
@@ -109,9 +115,11 @@ function ShowQuiz() {
                 {quizData.map((quiz) => (
                     <div className= "quizContainer" key={quiz.number}>
                         <h3 className="problemText" style={wrongAnswers[quiz.number] ? {color: 'red'} : {}}>{quiz.number}. {quiz.problem}</h3>
+                        {/* {quiz.number === 2 && <BinaryTree values={values} />} */}
                         {quiz.select.map((option, index) => (
                             // <div className="selectBox">
                                 <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
+                                    {quiz.number === 2 && <BinaryTree values={values} />}
                                     <Radio
                                         name={`quiz-${quiz.number}`}
                                         value={index}
@@ -122,7 +130,7 @@ function ShowQuiz() {
                                             marginRight: "15px",
                                             // ...(wrongAnswers[quiz.number] && index === quiz.answer ? { backgroundColor: 'red' } : {})
                                           }}
-                                    /> 
+                                    />
                                     {option}
                                 </label>
                             // </div>
