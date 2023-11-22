@@ -7,6 +7,7 @@ import random
 class quiz:
 
     def __init__(self,number,problem,select,answer):
+        self.type= 0
         self.number = number
         self.problem = problem
         self.select = select
@@ -17,6 +18,9 @@ class quiz:
         self.problem = problem
         self.select = select
         self.answer = answer
+
+    def setType(self,typeNum):
+        self.type=typeNum
 
     def mixAnswer(self):
         answerNumber = random.randint(0, 3)

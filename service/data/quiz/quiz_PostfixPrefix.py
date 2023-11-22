@@ -53,4 +53,5 @@ class quiz_PostfixPrefix:
             ]
 
         self.quiz=quiz(number,problem,select,answer)
+        self.quiz.setType(1)
 
