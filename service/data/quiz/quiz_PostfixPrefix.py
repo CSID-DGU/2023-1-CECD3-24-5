@@ -1,8 +1,6 @@
 from z3 import *
 from service.data.quiz.quiz import *
 from service.data.quiz.structure.structure_PostfixPrefix import *
-import sys
-import os
 import random
 
 

@@ -2,8 +2,6 @@ from z3 import *
 from service.data.quiz.quiz import *
 from service.data.quiz.concept.DataStructureComparison import *
 import random
-import sys
-import os
 
 
 class quiz_DataStructureComparison:

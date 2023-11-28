@@ -3,8 +3,6 @@ from service.data.quiz.quiz import *
 from service.data.quiz.concept.RandomAccess import *
 from service.data.quiz.concept.Enum import *
 import random
-import sys
-import os
 
 
 
