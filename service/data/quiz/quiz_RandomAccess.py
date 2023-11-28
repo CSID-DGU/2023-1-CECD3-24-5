@@ -13,7 +13,7 @@ class quiz_RandomAccess:
         self.quiz = None
 
     def setQuiz(self,num): 
-        number = 1
+        number = num
         instance = RandomAccess()
 
         can_ra = [name for name, var in instance.dic.items() if instance.model[var]]

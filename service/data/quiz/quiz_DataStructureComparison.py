@@ -13,7 +13,7 @@ class quiz_DataStructureComparison:
 
     def setQuiz(self,num):
         instance = DataStructureComparison()
-
+        number=num
         # 자료구조 목록을 가져옴
         structures = [
             "이진 탐색 트리 (BST)",
@@ -41,5 +41,5 @@ class quiz_DataStructureComparison:
 
         problem = "평균 케이스에서 탐색 시간 복잡도가 O(log n) 이하인 자료구조는 무엇입니까?"
 
-        self.quiz = (problem, options, 0)  # 정답 인덱스는 항상 0
+        self.quiz = quiz(number,problem, options, 0)  # 정답 인덱스는 항상 0
 

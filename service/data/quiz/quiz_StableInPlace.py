@@ -14,8 +14,9 @@ class quiz_StableInPlace:
         self.quiz = None
 
 
-    def setQuiz(self, unstable, inplace): 
+    def setQuiz(self,num, unstable, inplace): 
         instance = StableInPlace()
+        number=num
 
         # 조건에 맞는 알고리즘 선택
         selected_algos = [name for name, (unst, inpl) in instance.dic.items() if is_true(instance.model[unst]) == unstable and is_true(instance.model[inpl]) == inplace]
@@ -30,7 +31,7 @@ class quiz_StableInPlace:
 
         # 정답 인덱스 설정
         answer = 0   
-        self.quiz = quiz(1, problem, choices, answer)
+        self.quiz = quiz(number, problem, choices, answer)
 
         del instance
         import gc

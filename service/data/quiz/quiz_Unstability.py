@@ -12,7 +12,7 @@ class quiz_Unstability:
         self.quiz = None
 
     def setQuiz(self,num): 
-        number=1
+        number=num
         instance=Stability()
 
         # 안정한 알고리즘과 불안정한 알고리즘을 분류
