@@ -25,14 +25,17 @@ class quiz_BstHeapNormalTree:
             normal=NormalTree()
             select[0]='일반 트리'
             problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, h=%d, i=%d"%(normal.a,normal.b,normal.c,normal.d,normal.e,normal.f,normal.g,normal.h,normal.i)
+            problem += "\n 단, 수직 레이아웃에서 위쪽 노드는 왼쪽 자식 노드임을 가정한다."
         elif selected_tree_type=='BST':
             bst=BST()
             select[0]='이진 탐색 트리'
             problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, h=%d, i=%d"%(bst.a,bst.b,bst.c,bst.d,bst.e,bst.f,bst.g,bst.h,bst.i)
+            problem += "\n 단, 수직 레이아웃에서 위쪽 노드는 왼쪽 자식 노드임을 가정한다."
         else:
             minHeap=MinHeap()
             select[0]='최소 힙'
             problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, h=%d, i=%d"%(minHeap.a,minHeap.b,minHeap.c,minHeap.d,minHeap.e,minHeap.f,minHeap.g,minHeap.h,minHeap.i)
+            problem += "\n 단, 수직 레이아웃에서 위쪽 노드는 왼쪽 자식 노드임을 가정한다."
         for item in all_value:
             if item != select[0]:
                 select.append(item)
