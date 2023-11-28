@@ -11,7 +11,7 @@ class quiz_DataStructureComparison:
         self.quiz = None
 
 
-    def setQuiz(self):
+    def setQuiz(self,num):
         instance = DataStructureComparison()
 
         # 자료구조 목록을 가져옴

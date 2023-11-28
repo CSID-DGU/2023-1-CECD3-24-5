@@ -11,6 +11,7 @@ from service.data.quiz.quiz_newFeatures import *
 from service.data.quiz.quiz_RandomAccess import *
 from service.data.quiz.quiz_Stability import *
 from service.data.quiz.quiz_Unstability import *
+from service.data.quiz.quiz_StableInPlace import *
 
 
 
@@ -33,6 +34,8 @@ class CreateQuizsService:
         RandomAccess=quiz_RandomAccess()
         Stability=quiz_Stability()
         Unstability=quiz_Unstability()
+        #StableInPlace=quiz_StableInPlace()
+
 
         self.candidate.append(bsort)
         self.candidate.append(BSTHeapNormal)
@@ -41,12 +44,13 @@ class CreateQuizsService:
         self.candidate.append(circularQueueF)
         self.candidate.append(circularQueueE)
         self.candidate.append(findElementInStack)
-        self.canidate.append(DataStructureComparision)
-        self.canidate.append(Features)
-        self.canidate.append(newFeatures)
-        self.canidate.append(RandomAccess)
-        self.canidate.append(Stability)
-        self.canidate.append(Unstability)
+        self.candidate.append(DataStructureComparision)
+        self.candidate.append(Features)
+        self.candidate.append(newFeatures)
+        self.candidate.append(RandomAccess)
+        self.candidate.append(Stability)
+        self.candidate.append(Unstability)
+        #self.candidate.append(StableInPlace)
     
 
     def createQuizs(self, number):

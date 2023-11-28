@@ -11,7 +11,7 @@ class quiz_Unstability:
     def __init__(self):
         self.quiz = None
 
-    def setQuiz(self): 
+    def setQuiz(self,num): 
         number=1
         instance=Stability()
 
