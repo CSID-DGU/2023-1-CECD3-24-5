@@ -1,5 +1,5 @@
 from z3 import *
-from Enum import *
+from service.data.quiz.concept.Enum import *
 
 
 class StableInPlace:
