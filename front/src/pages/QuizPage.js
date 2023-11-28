@@ -8,31 +8,51 @@ import { Button, Radio } from 'antd';
 import Tree from 'react-d3-tree';
 
 function createTreeDataForType1(problemString) {
-    // Extract node values from the problem string
-    const nodeValues = problemString.match(/"([^"]+)"/g).map(str => str.replace(/"/g, ''));
+    const regex = /([a-z])="([^"]+)"/g;
 
-    // Assuming the order is root, root's left child, root's right child, etc.
+    let nodeValues = {}; // Declare nodeValues here to make it accessible throughout the function
+
+    const matches = problemString.match(regex);
+    if (!matches) {
+        console.error("No matches found in the problem string.");
+    } else {
+        nodeValues = matches.reduce((acc, pair) => {
+            const [key, value] = pair.split('=').map(s => s.replace(/["]/g, '').trim());
+            acc[key] = value;
+            return acc;
+        }, {});
+    }
+  
     const treeData = {
-        name: nodeValues[0],
-        children: [
+      name: nodeValues['a'], // root node
+      children: [
+        {
+          name: nodeValues['b'],
+          children: [
             {
-                name: nodeValues[1],
-                children: [
-                    { name: nodeValues[3] },
-                    { name: nodeValues[4] }
-                ]
+              name: nodeValues['d'],
             },
             {
-                name: nodeValues[2],
-                children: [
-                    { name: nodeValues[5] },
-                    { name: nodeValues[6] }
-                ]
+              name: nodeValues['e']
             }
-        ]
+          ]
+        },
+        {
+          name: nodeValues['c'],
+          children: [
+            {
+              name: nodeValues['f']
+            },
+            {
+              name: nodeValues['g']
+            }
+          ]
+        }
+      ]
     };
     return treeData;
 }
+
 const MyTreeComponentType1 = ({ problem }) => {
     const [treeData, setTreeData] = useState(null);
   

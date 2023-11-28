@@ -35,7 +35,8 @@ class quiz_PostfixPrefix:
 
     
             number = num
-            problem = "다음 트리 구조를 (전위순회)한 결과로 올바른 것은? \n" + " ".join(preorder_expr)
+            problem = f"다음 트리 구조를 (전위순회)한 결과로 올바른 것은? \n a={selected_model[a.value]}, b={selected_model[b.value]}, c={selected_model[c.value]}, d={selected_model[d.value]}, e={selected_model[e.value]}, f={selected_model[f.value]}, g={selected_model[g.value]}"
+            problem += "\n 단, 수직 레이아웃에서 위쪽 노드는 왼쪽 자식 노드임을 가정한다."
             select = ["", "", "", ""]
             answer = 0
             select = [
@@ -47,4 +48,3 @@ class quiz_PostfixPrefix:
 
         self.quiz=quiz(number,problem,select,answer)
         self.quiz.setType(1)
-

@@ -3,13 +3,7 @@ import random
 from service.data.quiz.structure.structure_Node import *
 
 
-'''
-class Node:
-    def __init__(self, value_var):
-        self.value = value_var
-        self.left = None
-        self.right = None
-'''
+
 
 def collect_all_nodes(node):    
     nodes = [node]
