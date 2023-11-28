@@ -119,7 +119,7 @@ function ShowQuiz() {
                         {quiz.select.map((option, index) => (
                             // <div className="selectBox">
                                 <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
-                                    {quiz.number === 2 && <BinaryTree values={values} />}
+                                    {/* {quiz.number === 2 && <BinaryTree values={values} />} */}
                                     <Radio
                                         name={`quiz-${quiz.number}`}
                                         value={index}
