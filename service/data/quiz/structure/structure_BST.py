@@ -1,6 +1,6 @@
 from z3 import *
 import random
-from structure_Node import Node
+from service.data.quiz.structure.structure_Node import *
 
 def generate_bst_conditions(node):
         conditions = []
