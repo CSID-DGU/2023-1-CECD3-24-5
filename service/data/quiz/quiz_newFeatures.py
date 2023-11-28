@@ -10,7 +10,7 @@ import os
 class quiz_newFeatures:
     def __init__(self):
         self.quiz = None
-    def setQuiz(self): 
+    def setQuiz(self,num): 
         number=1
         instance=newFeatures()
         algoName = random.choice(instance.model)
