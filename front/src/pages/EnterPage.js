@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import '../styles/EnterPage.css';
 import {Button} from 'antd';
-import Bottom from '../components/Bottom'
 
 function EnterPage() {
     const navigate = useNavigate(); //hook은 함수 컴포넌트의 최상위 레벨에서 호출되어야 함.
@@ -19,7 +18,6 @@ function EnterPage() {
                 <Button type="primary" className='EnterButton' onClick={handleStart}>Start</Button>
                 {/* <button className='EnterButton' onClick={handleStart}>Start</button> */}
             </div>
-            <Bottom />
         </div>
     );
 }

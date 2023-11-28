@@ -1,13 +1,12 @@
 import React from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
-// import BinaryTree from '../components/BinaryTree.jsx';
 import tree1 from '../resources/tree1.png';
 import tree2 from '../resources/tree2.png';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
-import { Radio } from 'antd';
+import { Button, Radio } from 'antd';
 
 function ShowQuiz() {
     //InputPage로 다시 이동하기 위함
@@ -68,8 +67,6 @@ function ShowQuiz() {
     //사용자가 답을 체크한 후, 상태를 localStorage에 저장 -> 새로고침 해도 checkedAnswer == true인 상태를 로드
     const [checkedAnswer, setCheckedAnswer] = useLocalStorage('checkedAnswer', false);
 
-    // const values = [-4, -1, -3, 0, 4, -2, 3, 2, 1];
-
 
     const handleSelect = (quizId, optionIndex) => {
         setSelectOpt(prevState => ({ ...prevState, [quizId] : optionIndex}));
@@ -115,11 +112,10 @@ function ShowQuiz() {
                 {quizData.map((quiz) => (
                     <div className= "quizContainer" key={quiz.number}>
                         <h3 className="problemText" style={wrongAnswers[quiz.number] ? {color: 'red'} : {}}>{quiz.number}. {quiz.problem}</h3>
-                        {/* {quiz.number === 2 && <BinaryTree values={values} />} */}
+                        {quiz.type === 1 && <img className="treeImage1" src={tree1} alt="atog"/>}
+                        {quiz.type === 2 && <img className="treeImage2" src={tree2} alt="atoi"/>}
                         {quiz.select.map((option, index) => (
-                            // <div className="selectBox">
                                 <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
-                                    {/* {quiz.number === 2 && <BinaryTree values={values} />} */}
                                     <Radio
                                         name={`quiz-${quiz.number}`}
                                         value={index}
@@ -133,16 +129,15 @@ function ShowQuiz() {
                                     />
                                     {option}
                                 </label>
-                            // </div>
                         ))}
                     </div>
                 ))}
             </div>
-            <div className="answerBtnBox">
+            <div>
                 {checkedAnswer ? ( //사용자가 정답 확인하기 버튼을 누르면 -> 다시 출제하기 버튼 보이기
-                    <button onClick={handleRestart}>다시 출제하기</button>
+                    <Button type="primary" className="answerBtn" onClick={handleRestart}>다시 출제하기</Button>
                 ) : (
-                    <button onClick={handleAnswer}>정답 확인하기</button>
+                    <Button type="primary" className="answerBtn" onClick={handleAnswer}>정답 확인하기</Button>
                 )}
             </div>
         </div>

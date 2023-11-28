@@ -4,3 +4,10 @@
   justify-content: center;
 }
 
+#wrapper {
+  min-height: calc(100vh - 20px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

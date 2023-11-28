@@ -1,5 +1,14 @@
-body {
+html, body {
     font-family:'Lexend', sans-serif;
     background-color: #FFFCF3;
     margin: 0;
+    padding: 0;
+    height: 100%;
+    top: 0;
+}
+
+#root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
