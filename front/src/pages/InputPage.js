@@ -4,8 +4,6 @@ import {useNavigate} from 'react-router-dom';
 import '../styles/InputPage.css';
 import { Button, Select } from 'antd';
 
-import Bottom from '../components/Bottom'
-
 import axios from 'axios';
 
 
@@ -52,7 +50,7 @@ function DropAndSubmit() {
 
     return (
         <>
-            <Select defaultValue={selectNum} onChange={handleSelect} style={{width : 120}} listHeight={200}>
+            <Select defaultValue={selectNum} onChange={handleSelect} style={{width : 120}} listHeight={150}>
                 {Array.from ({length:30}, (_, i) => i + 1).map((num) => (
                     <Option key={num} value={num}> {num} </Option>
                 ))}
@@ -78,7 +76,6 @@ function InputPage() {
                     <DropAndSubmit/>
                 </div>
             </div>
-            <Bottom />
         </div>
     );
 }
