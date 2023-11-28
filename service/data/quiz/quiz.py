@@ -34,5 +34,6 @@ class quiz:
             'number': self.number,
             'problem': self.problem,
             'select': self.select,
-            'answer': self.answer
+            'answer': self.answer,
+            'type': self.type
         }
