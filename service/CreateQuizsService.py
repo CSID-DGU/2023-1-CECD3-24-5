@@ -5,7 +5,7 @@ from service.data.quiz.quiz_WorstComplexity import *
 from service.data.quiz.quiz_circularQueueF import *
 from service.data.quiz.quiz_circularQueueE import *
 from service.data.quiz.quiz_findElementInStack import *
-from service.data.quiz.quiz_DataStructureComparision import *
+from service.data.quiz.quiz_DataStructureComparison import *
 from service.data.quiz.quiz_Features import *
 from service.data.quiz.quiz_newFeatures import *
 from service.data.quiz.quiz_RandomAccess import *
@@ -28,7 +28,7 @@ class CreateQuizsService:
         circularQueueF=quiz_circularQueueF()
         circularQueueE=quiz_circularQueueE()
         findElementInStack=quiz_findElementInStack()
-        DataStructureComparision=quiz_DataStructureComparison()
+        DataStructureComparison=quiz_DataStructureComparison()
         Features=quiz_Features()
         newFeatures=quiz_newFeatures()
         RandomAccess=quiz_RandomAccess()
@@ -44,7 +44,7 @@ class CreateQuizsService:
         self.candidate.append(circularQueueF)
         self.candidate.append(circularQueueE)
         self.candidate.append(findElementInStack)
-        self.candidate.append(DataStructureComparision)
+        self.candidate.append(DataStructureComparison)
         self.candidate.append(Features)
         self.candidate.append(newFeatures)
         self.candidate.append(RandomAccess)
