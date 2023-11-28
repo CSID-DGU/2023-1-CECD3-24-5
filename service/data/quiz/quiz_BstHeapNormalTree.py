@@ -26,15 +26,15 @@ class quiz_BstHeapNormalTree:
         if selected_tree_type=='Normal':
             normal=NormalTree()
             select[0]='일반 트리'
-            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(normal.a,normal.b,normal.c,normal.d,normal.e,normal.f,normal.g,normal.h,normal.i)
+            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, h=%d, i=%d"%(normal.a,normal.b,normal.c,normal.d,normal.e,normal.f,normal.g,normal.h,normal.i)
         elif selected_tree_type=='BST':
             bst=BST()
             select[0]='이진 탐색 트리'
-            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(bst.a,bst.b,bst.c,bst.d,bst.e,bst.f,bst.g,bst.h,bst.i)
+            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, h=%d, i=%d"%(bst.a,bst.b,bst.c,bst.d,bst.e,bst.f,bst.g,bst.h,bst.i)
         else:
             minHeap=MinHeap()
             select[0]='최소 힙'
-            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, e=%d, i=%d"%(minHeap.a,minHeap.b,minHeap.c,minHeap.d,minHeap.e,minHeap.f,minHeap.g,minHeap.h,minHeap.i)
+            problem=problem+"\n"+"a=%d, b=%d, c=%d, d=%d, e=%d, f=%d, g=%d, h=%d, i=%d"%(minHeap.a,minHeap.b,minHeap.c,minHeap.d,minHeap.e,minHeap.f,minHeap.g,minHeap.h,minHeap.i)
         for item in all_value:
             if item != select[0]:
                 select.append(item)

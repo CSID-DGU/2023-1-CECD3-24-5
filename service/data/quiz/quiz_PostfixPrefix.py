@@ -37,7 +37,7 @@ class quiz_PostfixPrefix:
 
     
             number = num
-            problem = "다음 중 위 트리 구조를 (전위순회)한 결과로 올바른 것은?"
+            problem = "다음 트리 구조를 (전위순회)한 결과로 올바른 것은? \n" + " ".join(preorder_expr)
             select = ["", "", "", ""]
             answer = 0
             select = [
