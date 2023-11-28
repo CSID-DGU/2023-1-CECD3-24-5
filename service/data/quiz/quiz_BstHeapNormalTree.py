@@ -5,17 +5,13 @@
 # 문제 예시: 아래 자료구조는 (트리, BST, Heap, Red-Black 트리) 중 하나이다. 해당되는 자료구조를 선택하시오.
 from z3 import *
 from service.data.quiz.quiz import *
+from service.data.quiz.structure.structure_NormalTree import *
+from service.data.quiz.structure.structure_MinHeap import *
+from service.data.quiz.structure.structure_BST import *
 import random
 import sys
 import os
 
-# 현재 스크립트의 경로를 가져옴
-current_path = os.path.dirname(os.path.abspath(__file__))
-
-sys.path.append(os.path.join(current_path, '../structure'))
-from structure_NormalTree import NormalTree
-from structure_MinHeap import MinHeap
-from structure_BST import BST
 
 class quiz_BstHeapNormalTree:
     def __init__(self):

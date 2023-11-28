@@ -1,16 +1,11 @@
 from z3 import *
 from service.data.quiz.quiz import *
+from service.data.quiz.structure.structure_PostfixPrefix import *
 import sys
 import os
 import random
 
 
-# 현재 스크립트의 경로를 가져옴
-current_path = os.path.dirname(os.path.abspath(__file__))
-
-# structure 디렉토리의 경로를 sys.path에 추가
-sys.path.append(os.path.join(current_path, '../structure'))
-from structure_PostfixPrefix import *
 
 class quiz_PostfixPrefix:
     def __init__(self):

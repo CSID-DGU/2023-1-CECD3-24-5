@@ -1,15 +1,12 @@
 from z3 import *
 #from quiz import *
 from service.data.quiz.quiz import *
+from service.data.quiz.concept.WorstComplexity import *
+from service.data.quiz.concept.Enum import *
 import random
 import sys
 import os
 
-# 현재 스크립트의 경로를 가져옴
-current_path = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(current_path, '../concept'))
-from WorstComplexity import *
-from Enum import *
 
 class quiz_WorstComplexity:
     def __init__(self):
@@ -26,7 +23,7 @@ class quiz_WorstComplexity:
                 select.append(i)
         answer=0
         self.quiz=quiz(number,problem,select,answer)
-
+        
         del instance
         import gc
         gc.collect()
