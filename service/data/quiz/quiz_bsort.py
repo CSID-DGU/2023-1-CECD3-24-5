@@ -1,8 +1,6 @@
 from z3 import *
 from service.data.quiz.quiz import *
 from service.data.quiz.structure.structure_bsort_list import *
-import sys
-import os
 
 
 class quiz_bsort:

@@ -9,8 +9,6 @@ from service.data.quiz.structure.structure_NormalTree import *
 from service.data.quiz.structure.structure_MinHeap import *
 from service.data.quiz.structure.structure_BST import *
 import random
-import sys
-import os
 
 
 class quiz_BstHeapNormalTree:
