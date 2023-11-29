@@ -1,12 +1,152 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/QuizPage.css';
-import tree1 from '../resources/tree1.png';
-import tree2 from '../resources/tree2.png';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
 import { Button, Radio } from 'antd';
+import Tree from 'react-d3-tree';
+
+function createTreeDataForType1(problemString) {
+    const regex = /([a-z])="([^"]+)"/g;
+
+    let nodeValues = {}; // Declare nodeValues here to make it accessible throughout the function
+
+    const matches = problemString.match(regex);
+    if (!matches) {
+        console.error("No matches found in the problem string.");
+    } else {
+        nodeValues = matches.reduce((acc, pair) => {
+            const [key, value] = pair.split('=').map(s => s.replace(/["]/g, '').trim());
+            acc[key] = value;
+            return acc;
+        }, {});
+    }
+  
+    const treeData = {
+      name: nodeValues['a'], // root node
+      children: [
+        {
+          name: nodeValues['b'],
+          children: [
+            {
+              name: nodeValues['d'],
+            },
+            {
+              name: nodeValues['e']
+            }
+          ]
+        },
+        {
+          name: nodeValues['c'],
+          children: [
+            {
+              name: nodeValues['f']
+            },
+            {
+              name: nodeValues['g']
+            }
+          ]
+        }
+      ]
+    };
+    return treeData;
+}
+
+const MyTreeComponentType1 = ({ problem }) => {
+    const [treeData, setTreeData] = useState(null);
+  
+    useEffect(() => {
+      const data = createTreeDataForType1(problem);
+      setTreeData([data]); // react-d3-tree는 배열 형태의 데이터를 기대합니다.
+    }, [problem]);
+    const scaleExtent = { min: 0.1, max: 1 };
+    const translate = { x: 50, y: 200 };
+    const separation = { siblings: 0.5, nonSiblings: 0.5 };
+    return (
+      <div id="treeWrapper" style={{ width: '50em', height: '20em' }}>
+        {treeData && (
+          <Tree
+            data={treeData}
+            scaleExtent={scaleExtent}
+            translate={translate}
+            separation={separation}
+          />
+        )}
+      </div>
+    );
+  };
+
+
+function createTreeDataForType2(problemString) {
+  const nodeValues = problemString.match(/([a-z])=(-?\d+)/g).reduce((acc, pair) => {
+    const [key, value] = pair.split('=');
+    acc[key] = value;
+    return acc;
+  }, {});
+
+  const treeData = {
+    name: nodeValues['a'], // root node
+    children: [
+      {
+        name: nodeValues['b'],
+        children: [
+          {
+            name: nodeValues['d'],
+            children: [
+              {
+                name: nodeValues['h']
+              },
+              {
+                name: nodeValues['i']
+              }
+            ]
+          },
+          {
+            name: nodeValues['e']
+          }
+        ]
+      },
+      {
+        name: nodeValues['c'],
+        children: [
+          {
+            name: nodeValues['f']
+          },
+          {
+            name: nodeValues['g']
+          }
+        ]
+      }
+    ]
+  };
+  return treeData;
+}
+
+const MyTreeComponentType2 = ({ problem }) => {
+  const [treeData, setTreeData] = useState(null);
+
+  useEffect(() => {
+    const data = createTreeDataForType2(problem);
+    setTreeData([data]); // react-d3-tree는 배열 형태의 데이터를 기대합니다.
+  }, [problem]);
+  const scaleExtent = { min: 0.1, max: 1 };
+  const translate = { x: 50, y: 200 };
+  const separation = { siblings: 0.5, nonSiblings: 0.5 };
+  return (
+    <div id="treeWrapper" style={{ width: '50em', height: '20em' }}>
+      {treeData && (
+        <Tree
+          data={treeData}
+          scaleExtent={scaleExtent}
+          translate={translate}
+          separation={separation}
+        />
+      )}
+    </div>
+  );
+};
+
 
 function ShowQuiz() {
     //InputPage로 다시 이동하기 위함
@@ -112,8 +252,12 @@ function ShowQuiz() {
                 {quizData.map((quiz) => (
                     <div className= "quizContainer" key={quiz.number}>
                         <h3 className="problemText" style={wrongAnswers[quiz.number] ? {color: 'red'} : {}}>{quiz.number}. {quiz.problem}</h3>
-                        {quiz.type === 1 && <img className="treeImage1" src={tree1} alt="atog"/>}
-                        {quiz.type === 2 && <img className="treeImage2" src={tree2} alt="atoi"/>}
+                        {quiz.type === 1 && (
+                            <MyTreeComponentType1 problem={quiz.problem} />
+                        )}
+                        {quiz.type === 2 && (
+                            <MyTreeComponentType2 problem={quiz.problem} />
+                        )}
                         {quiz.select.map((option, index) => (
                                 <label key={index} className="quizOption" style={wrongAnswers[quiz.number] && index === quiz.answer ? {color: 'red'} : {}}>
                                     <Radio

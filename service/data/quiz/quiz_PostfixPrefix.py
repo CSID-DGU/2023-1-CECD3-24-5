@@ -1,16 +1,9 @@
 from z3 import *
 from service.data.quiz.quiz import *
-import sys
-import os
+from service.data.quiz.structure.structure_PostfixPrefix import *
 import random
 
 
-# 현재 스크립트의 경로를 가져옴
-current_path = os.path.dirname(os.path.abspath(__file__))
-
-# structure 디렉토리의 경로를 sys.path에 추가
-sys.path.append(os.path.join(current_path, '../structure'))
-from structure_PostfixPrefix import *
 
 class quiz_PostfixPrefix:
     def __init__(self):
@@ -42,7 +35,8 @@ class quiz_PostfixPrefix:
 
     
             number = num
-            problem = "다음 중 위 트리 구조를 (전위순회)한 결과로 올바른 것은?"
+            problem = f"다음 트리 구조를 (전위순회)한 결과로 올바른 것은? \n a={selected_model[a.value]}, b={selected_model[b.value]}, c={selected_model[c.value]}, d={selected_model[d.value]}, e={selected_model[e.value]}, f={selected_model[f.value]}, g={selected_model[g.value]}"
+            problem += "\n 단, 수직 레이아웃에서 위쪽 노드는 왼쪽 자식 노드임을 가정한다."
             select = ["", "", "", ""]
             answer = 0
             select = [
@@ -54,4 +48,3 @@ class quiz_PostfixPrefix:
 
         self.quiz=quiz(number,problem,select,answer)
         self.quiz.setType(1)
-
