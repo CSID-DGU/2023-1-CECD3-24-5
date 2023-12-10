@@ -51,7 +51,7 @@ function DropAndSubmit() {
     return (
         <>
             <Select defaultValue={selectNum} onChange={handleSelect} style={{width : 120}} listHeight={150}>
-                {Array.from ({length:30}, (_, i) => i + 1).map((num) => (
+                {Array.from ({length:13}, (_, i) => i + 1).map((num) => (
                     <Option key={num} value={num}> {num} </Option>
                 ))}
             </Select>
