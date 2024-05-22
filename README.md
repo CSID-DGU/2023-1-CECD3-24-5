@@ -29,7 +29,7 @@
 ### 개발환경 및 오픈소스 활용
 - Python
 - React
-- Spring
+- flask 
 - Node.js
 - MariaDB
 - Swagger
