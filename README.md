@@ -31,7 +31,6 @@
 - React
 - flask 
 - Node.js
-- MariaDB
 - Swagger
 
 ### 깃 사용법
