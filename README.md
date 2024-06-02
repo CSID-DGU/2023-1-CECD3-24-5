@@ -40,9 +40,9 @@
 
 ### 깃 브랜치 전략
 1. 자신의 개발 브랜치는 feature/개발 내용으로 브랜치를 생성하여 제작한다
-1. 테스트 완료 후 feature 브랜치를 master 브랜치로 머지한다(병합한 feature 브랜치를 삭제한다)
-1. master 브랜치를 develop 브랜치로 머지한다
-1. master 브랜치로 배포 진행 후 발생하는 버그들은 develop에서 개선 후 master로 머지한다
+1. 테스트 완료 후 feature 브랜치를 develop 브랜치로 머지한다(병합한 feature 브랜치를 삭제한다)
+1. develop 브랜치를 master 브랜치로 머지한다
+1. develop 브랜치로 배포 진행 후 발생하는 버그들은 develop에서 개선 후 master로 머지한다
 
 ### 코딩 컨벤션
 1. 서비스 개발을 진행할 때 해당 서비스에 해당하는 컨트롤러, 서비스, 리포지토리를 모아놓는다.
